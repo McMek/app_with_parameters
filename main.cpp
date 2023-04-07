@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <fstream>
 using namespace std;
 
 int main(int argc, char* argv[])
@@ -39,6 +40,21 @@ int main(int argc, char* argv[])
 			cout << "\nUsage: appwithParameters.exe test\n" << endl;
 			exit(1);
 		}
+
+	cout << "\n";
+
+	ifstream testtxt;
+
+	testtxt.open("test.txt");
+
+	if (testtxt)
+	{
+		cout << "test.txt detected\n";
+	}
+	else
+	{
+		cout << "test.txt not detected\n";
+	}
 
 	cout << "\n";
 
