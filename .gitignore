@@ -40,3 +40,4 @@ Downloader/include/Versions.h
 build/
 bin/
 install/ 
+x64/
