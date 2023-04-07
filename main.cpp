@@ -37,11 +37,12 @@ int main(int argc, char* argv[])
 		}
 		else
 		{
-			cout << "\nUsage: appwithParameters.exe test \n" << endl;
+			cout << "\nUsage: appwithParameters.exe test\n" << endl;
 			exit(1);
 		}
 
 	cout << "\n";
 
 	return 0;
+
 }
