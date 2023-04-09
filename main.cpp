@@ -8,10 +8,20 @@ using namespace std;
 
 void ArgumentParser(int argc, char* argv[]);
 
+bool FileExists(const char* filename);
+
 int main(int argc, char* argv[])
 {
-		
 	ArgumentParser(argc, argv);
+	
+	if (FileExists)
+	{
+		cout << "test.txt file detected\n\n";
+	}
+	else
+	{
+		cout << "test.txt file not detected\n\n";
+	}
 
 	return 0;
 
@@ -56,7 +66,7 @@ void ArgumentParser(int argc, char* argv[])
 	}
 
 	cout << endl;
-
+	/*
 	if (filesystem::exists("test.txt"))
 	{
 		cout << "test.txt detected\n\n";
@@ -65,7 +75,7 @@ void ArgumentParser(int argc, char* argv[])
 	{
 		cout << "test.txt not detected\n\n";
 	}
-
+	*/
 	//adding string check for "=" sign
 
 	for (int i = 1; i < argc; i++)
@@ -110,5 +120,19 @@ void ArgumentParser(int argc, char* argv[])
 			cout << "unsuccsessfull";
 		}*/
 
+	}
+}
+
+bool FileExists(const char* filename)
+{
+	filename = "test.txt";
+
+	if (filesystem::exists(filename))
+	{
+		return true;
+	}
+	else
+	{
+		return false;
 	}
 }
