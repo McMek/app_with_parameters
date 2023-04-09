@@ -3,6 +3,7 @@
 #include <fstream>
 #include <sstream>
 #include <stdio.h>
+#include <filesystem>
 using namespace std;
 
 int main(int argc, char* argv[])
@@ -45,11 +46,11 @@ int main(int argc, char* argv[])
 
 	cout << endl;
 
-	ifstream testtxt;
+	//ifstream testtxt;
 
-	testtxt.open("test.txt");
+	//testtxt.open("test.txt");
 
-	if (testtxt)
+	if (std::filesystem::exists("test.txt"))
 	{
 		cout << "test.txt detected\n\n";
 	}
