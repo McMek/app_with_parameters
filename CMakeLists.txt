@@ -7,7 +7,8 @@ project(AppWithParameters
 )
 
 add_executable(AppWithParameters
-    "main.cpp")
+    "main.cpp"
+    "helpers.cpp")
 
 target_compile_features(AppWithParameters PRIVATE cxx_std_20)
 
