@@ -9,7 +9,7 @@ project(AppWithParameters
 add_executable(AppWithParameters
     "main.cpp")
 
-target_compile_features(AppWithParameters PRIVATE cxx_std_17)
+target_compile_features(AppWithParameters PRIVATE cxx_std_20)
 
 target_include_directories(AppWithParameters 
         PUBLIC ./)
