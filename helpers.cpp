@@ -4,6 +4,8 @@
 #include <sstream>
 #include <stdio.h>
 #include <filesystem>
+#include <vector>
+#include <algorithm>
 #include "helpers.h"
 using namespace std;
 
@@ -21,35 +23,22 @@ bool FileExists(const char* filename)
 
 void ArgumentParser(int argc, char* argv[])
 {
-	string match;
+	vector<string> args;
 
-	for (int i = 1; i < argc; i++)
-	{
-		string argi = argv[i];
+	int i;
 
-		if (argi.find("test") == 0)
-			match = argi.substr(0, 4);
+	for (i = 1; i < argc; i++) {
+		args.push_back(argv[i]);
 	}
 
-	bool found = false;
+	sort(args.begin(), args.end());
 
-	for (int i = 1; i < argc; i++)
+	if (find(args.begin(), args.end(), "test") != args.end())
 	{
-		string argi = argv[i];
+		cout << "\n\"Test\" argument initiated\n" << "\nCommand-line arguments:\n";
 
-		if (argi.find("test") == 0)
-			if (argi == match)
-				found = true;
-	}
-
-	if (found)
-	{
-		cout << "\n\"Test\" argument initiated" << endl;
-
-		int count;
-		cout << "\nCommand-line arguments:\n";
-		for (count = 1; count < argc; count++)
-			cout << "  argv[" << count << "]   " << argv[count] << "\n";
+		for (i = 0; i < args.size(); i++)
+			cout << "argv[" << i + 1 << "] " << args[i] << "\n";
 	}
 	else
 	{
@@ -99,3 +88,4 @@ void ArgumentParser(int argc, char* argv[])
 
 	}
 }
+
