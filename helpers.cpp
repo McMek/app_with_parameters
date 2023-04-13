@@ -57,8 +57,8 @@ void ArgumentParser(int argc, char* argv[])
         {
             cout << "Found '=' in argument: '" << str << "'\n" << endl;
 
-            std::string key = str.substr(0, pos);
-            std::string value = str.substr(pos + 1);
+            string key = str.substr(0, pos);
+            string value = str.substr(pos + 1);
             argm[key] = value;
         }
     }
