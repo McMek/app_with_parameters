@@ -55,8 +55,6 @@ void ArgumentParser(int argc, char* argv[])
         size_t pos = str.find('=');
         if (pos != string::npos)
         {
-            cout << "Found '=' in argument: '" << str << "'\n" << endl;
-
             string key = str.substr(0, pos);
             string value = str.substr(pos + 1);
             argm[key] = value;
