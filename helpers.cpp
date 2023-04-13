@@ -33,8 +33,6 @@ void ArgumentParser(int argc, char* argv[])
         args.push_back(argv[i]);
     }
 
-    sort(args.begin(), args.end());
-
     if (find(args.begin(), args.end(), "test") != args.end())
     {
         cout << "\n\"Test\" argument initiated\n" << "\nCommand-line arguments:\n";
