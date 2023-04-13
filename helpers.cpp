@@ -27,9 +27,9 @@ void ArgumentParser(int argc, char* argv[])
     vector<string> args;
     map<string, string> argm;
 
-    int i;
+    unsigned int i;
 
-    for (i = 1; i < argc; i++) {
+    for (i = 1; i < (unsigned int)argc; i++) {
         args.push_back(argv[i]);
     }
 
