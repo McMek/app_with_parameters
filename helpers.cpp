@@ -22,46 +22,37 @@ bool FileExists(const char* filename)
     }
 }
 
-void ArgumentParser(int argc, char* argv[])
+bool ArgumentParser(int argc, char* argv[])
 {
-    vector<string> args;
+    vector<string> args(argv + 1, argv + argc);
     map<string, string> argm;
-
-    unsigned int i;
-
-    for (i = 1; i < (unsigned int)argc; i++) {
-        args.push_back(argv[i]);
-    }
 
     if (find(args.begin(), args.end(), "test") != args.end())
     {
-        cout << "\n\"Test\" argument initiated\n" << "\nCommand-line arguments:\n";
+        for (const auto& str : args)
+        {
+            size_t pos = str.find('=');
+            if (pos != string::npos)
+            {
+                string key = str.substr(0, pos);
+                string value = str.substr(pos + 1);
+                argm[key] = value;
+            }
+        }
 
-        for (i = 0; i < args.size(); i++)
-            cout << "argv[" << i + 1 << "] " << args[i] << "\n";
+        cout << endl;
+
+        for (const auto& [key, value] : argm)
+        {
+            cout << "Key: " << key << "\n" << "Value: " << value << "\n" << endl;
+        }
+
+        return true;
     }
     else
     {
         cout << "\nUsage: appwithParameters.exe test\n" << endl;
-        exit(1);
-    }
-
-    cout << endl;
-
-    for (const auto& str : args)
-    {
-        size_t pos = str.find('=');
-        if (pos != string::npos)
-        {
-            string key = str.substr(0, pos);
-            string value = str.substr(pos + 1);
-            argm[key] = value;
-        }
-    }
-
-    for (const auto& [key, value] : argm)
-    {
-        cout << "Key: " << key << "\n" << "Value: " << value << "\n" << endl;
+        return false;
     }
 }
 

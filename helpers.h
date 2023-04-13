@@ -2,4 +2,4 @@
 
 bool FileExists(const char* filename);
 
-void ArgumentParser(int argc, char* argv[]);
+bool ArgumentParser(int argc, char* argv[]);

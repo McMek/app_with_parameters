@@ -9,7 +9,8 @@ using namespace std;
 
 int main(int argc, char* argv[])
 {
-	ArgumentParser(argc, argv);
+	if (!ArgumentParser(argc, argv))
+		return 1;
 	
 	if (FileExists("test.txt"))
 	{
