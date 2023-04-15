@@ -7,6 +7,7 @@
 #include <vector>
 #include <algorithm>
 #include <map>
+#include <chrono>
 #include "helpers.h"
 using namespace std;
 
@@ -52,7 +53,24 @@ bool ArgumentParser(int argc, char* argv[])
     else
     {
         cout << "\nUsage: appwithParameters.exe test\n" << endl;
+       
         return false;
     }
+}
+
+int64_t timerStartedAt;
+
+void StartTimer()
+{
+    using namespace std::chrono;
+    timerStartedAt = duration_cast<milliseconds>(system_clock::now().time_since_epoch()).count();
+}
+
+double GetDeltaTime()
+{
+    using namespace std::chrono;
+    int64_t currentTime = duration_cast<milliseconds>(system_clock::now().time_since_epoch()).count();
+
+    return currentTime - timerStartedAt;
 }
 

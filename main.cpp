@@ -9,6 +9,8 @@ using namespace std;
 
 int main(int argc, char* argv[])
 {
+	StartTimer();
+	
 	if (!ArgumentParser(argc, argv))
 		return 1;
 	
@@ -20,6 +22,8 @@ int main(int argc, char* argv[])
 	{
 		cout << "test.txt file not detected\n\n";
 	}
+
+	cout << "App execution time: " << GetDeltaTime() << "ms\n" << endl;
 
 	return 0;
 
