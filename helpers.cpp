@@ -80,7 +80,7 @@ bool DebugFinder(int argc, char* argv[])
     
     if (find(args.begin(), args.end(), "debug") != args.end())
     {
-        cout << "Elapsed time: " << GetDeltaTime() << "milliseconds\n" << endl;
+        cout << "Elapsed time: " << GetDeltaTime() << " milliseconds\n" << endl;
 
         return true;
     }
