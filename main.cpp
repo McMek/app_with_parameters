@@ -23,7 +23,8 @@ int main(int argc, char* argv[])
 		cout << "test.txt file not detected\n\n";
 	}
 
-	cout << "App execution time: " << GetDeltaTime() << "ms\n" << endl;
+	if (!DebugFinder(argc, argv))
+		return 1;
 
 	return 0;
 

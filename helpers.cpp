@@ -74,3 +74,21 @@ double GetDeltaTime()
     return currentTime - timerStartedAt;
 }
 
+bool DebugFinder(int argc, char* argv[])
+{
+    vector<string> args(argv + 1, argv + argc);
+    
+    if (find(args.begin(), args.end(), "debug") != args.end())
+    {
+        cout << "Elapsed time: " << GetDeltaTime() << "milliseconds\n" << endl;
+
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+
+
