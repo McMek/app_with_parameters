@@ -27,11 +27,6 @@ int main(int argc, char* argv[])
 	{
 		cout << "Elapsed time: " << GetDeltaTime() << " milliseconds\n" << endl;
 	}
-	
-	/*
-	if (!DebugFinder(argc, argv))
-		return 1;
-	*/
 
 	return 0;
 

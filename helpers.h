@@ -10,5 +10,3 @@ double GetDeltaTime();
 
 extern bool debugFinder;
 
-//bool DebugFinder(int argc, char* argv[]);
-
