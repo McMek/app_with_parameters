@@ -23,13 +23,20 @@ bool FileExists(const char* filename)
     }
 }
 
+bool debugFinder = false;
+
 bool ArgumentParser(int argc, char* argv[])
 {
     vector<string> args(argv + 1, argv + argc);
     map<string, string> argm;
 
     if (find(args.begin(), args.end(), "test") != args.end())
-    {
+    {   
+        if (find(args.begin(), args.end(), "debug") != args.end())
+        {
+            debugFinder = true;
+        }
+        
         for (const auto& str : args)
         {
             size_t pos = str.find('=');
@@ -74,6 +81,7 @@ double GetDeltaTime()
     return currentTime - timerStartedAt;
 }
 
+/*
 bool DebugFinder(int argc, char* argv[])
 {
     vector<string> args(argv + 1, argv + argc);
@@ -88,7 +96,7 @@ bool DebugFinder(int argc, char* argv[])
     {
         return false;
     }
-}
+}*/
 
 
 

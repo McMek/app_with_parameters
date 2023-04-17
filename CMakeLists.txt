@@ -8,7 +8,9 @@ project(AppWithParameters
 
 add_executable(AppWithParameters
     "main.cpp"
-    "helpers.cpp")
+    "helpers.cpp"
+    "Coordinate.cpp"
+)
 
 target_compile_features(AppWithParameters PRIVATE cxx_std_20)
 

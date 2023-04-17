@@ -1,23 +1,14 @@
 #include <iostream>
 #include <Coordinate.h>
 
-class Coordinate
+void Coordinate::SetPosition(int x, int y)
 {
-private:
-	int m_x;
-	int m_y;
+    m_x = x;
+    m_y = y;
+}
 
-public:
-
-	void setPosition(int x, int y)
-	{
-		m_x = x;
-		m_y = y;
-	}
-
-	void getPosition(int &x, int &y)
-	{
-		x = m_x;
-		y = m_y;
-	}
-};
+void Coordinate::GetPosition(int& x, int& y) const
+{
+    x = m_x;
+    y = m_y;
+}

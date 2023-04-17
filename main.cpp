@@ -23,8 +23,15 @@ int main(int argc, char* argv[])
 		cout << "test.txt file not detected\n\n";
 	}
 
+	if (debugFinder)
+	{
+		cout << "Elapsed time: " << GetDeltaTime() << " milliseconds\n" << endl;
+	}
+	
+	/*
 	if (!DebugFinder(argc, argv))
 		return 1;
+	*/
 
 	return 0;
 

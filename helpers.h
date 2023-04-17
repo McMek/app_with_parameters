@@ -8,5 +8,7 @@ void StartTimer();
 
 double GetDeltaTime();
 
-bool DebugFinder(int argc, char* argv[]);
+extern bool debugFinder;
+
+//bool DebugFinder(int argc, char* argv[]);
 
