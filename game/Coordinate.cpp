@@ -1,4 +1,4 @@
-#include <Coordinate.h>
+#include "Coordinate.h"
 
 void Coordinate::SetPosition(int x, int y)
 {

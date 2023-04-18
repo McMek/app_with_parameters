@@ -132,11 +132,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="game\Coordinate.cpp" />
+    <ClCompile Include="game\Player.cpp" />
     <ClCompile Include="helpers.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game\Coordinate.h" />
+    <ClInclude Include="game\Player.h" />
+    <ClInclude Include="game\types.h" />
     <ClInclude Include="helpers.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>

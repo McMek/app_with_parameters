@@ -78,7 +78,7 @@ double GetDeltaTime()
     using namespace std::chrono;
     int64_t currentTime = duration_cast<milliseconds>(system_clock::now().time_since_epoch()).count();
 
-    return currentTime - timerStartedAt;
+    return static_cast<double>(currentTime - timerStartedAt);
 }
 
 
