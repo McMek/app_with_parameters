@@ -6,7 +6,7 @@ bool ArgumentParser(int argc, char* argv[]);
 
 void StartTimer();
 
-double GetDeltaTime();
+int64_t GetDeltaTime();
 
 extern bool debugFinder;
 
