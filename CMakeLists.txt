@@ -11,6 +11,7 @@ add_executable(AppWithParameters
     "helpers.cpp"
     "Coordinate.cpp"
     "Player.cpp"
+    "World.cpp"
 )
 
 target_compile_features(AppWithParameters PRIVATE cxx_std_20)
