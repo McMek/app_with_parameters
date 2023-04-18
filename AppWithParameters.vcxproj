@@ -133,6 +133,7 @@
   <ItemGroup>
     <ClCompile Include="game\Coordinate.cpp" />
     <ClCompile Include="game\Player.cpp" />
+    <ClCompile Include="game\World.cpp" />
     <ClCompile Include="helpers.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
@@ -140,6 +141,7 @@
     <ClInclude Include="game\Coordinate.h" />
     <ClInclude Include="game\Player.h" />
     <ClInclude Include="game\types.h" />
+    <ClInclude Include="game\World.h" />
     <ClInclude Include="helpers.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
