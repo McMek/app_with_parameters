@@ -14,9 +14,13 @@ private:
 public:
 	World();
 	World(int size);
-	int GetMapIndex(const Coordinate& x) const;
-	bool MovePlayer(const Player& p, const Coordinate& c);
+	int getSize() const;
+	vector<int> getWorldMap() const;
+	int GetMapIndex(const Coordinate& coord) const;
 	void ClearWorld();
+	bool MovePlayer(const Player& p, const Coordinate& c);
+	void ClearCoordinate(const Coordinate& c);
 	int GetCellValue(const Coordinate& c);
+
 	int CountNeighbours(const Coordinate& c);
 };
