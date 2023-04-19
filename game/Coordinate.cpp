@@ -1,13 +1,23 @@
 #include "Coordinate.h"
 
-void Coordinate::SetPosition(int x, int y)
+Coordinate::Coordinate(int x, int y) : m_x(x), m_y(y) {}
+
+void Coordinate::SetPositionX(int x)
 {
     m_x = x;
+}
+
+void Coordinate::SetPositionY(int y)
+{
     m_y = y;
 }
 
-void Coordinate::GetPosition(int& x, int& y) const
+int Coordinate::GetPositionX() const
 {
-    x = m_x;
-    y = m_y;
+    return m_x;
+}
+
+int Coordinate::GetPositionY() const
+{
+    return m_y;
 }
