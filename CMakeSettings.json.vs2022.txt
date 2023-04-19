@@ -1,92 +1,42 @@
 ﻿{
   "configurations": [
     {
-      "name": "Release32-Static",
+      "name": "Release32",
       "generator": "Visual Studio 17 2022",
       "configurationType": "Release",
       "inheritEnvironments": [ "msvc_x32" ],
       "intelliSenseMode": "windows-msvc-x86",
       "buildRoot": "${projectDir}\\build\\${name}",
-      "installRoot": "${projectDir}\\install\\${name}",
-      "cmakeExecutable": "C:\\Program Files\\CMake\\bin\\cmake.exe"
+      "installRoot": "${projectDir}\\install\\${name}"
     },
     {
-      "name": "Release64-Static",
+      "name": "Release64",
       "generator": "Visual Studio 17 2022 Win64",
       "configurationType": "Release",
       "intelliSenseMode": "windows-msvc-x64",
       "inheritEnvironments": [ "msvc_x64_x64" ],
       "buildCommandArgs": "-p:PreferredToolArchitecture=x64",
       "buildRoot": "${projectDir}\\build\\${name}",
-      "installRoot": "${projectDir}\\install\\${name}",
-      "cmakeExecutable": "C:\\Program Files\\CMake\\bin\\cmake.exe"
+      "installRoot": "${projectDir}\\install\\${name}"
     },
     {
-      "name": "Debug32-Static",
+      "name": "Debug32",
       "generator": "Visual Studio 17 2022",
       "configurationType": "Debug",
       "intelliSenseMode": "windows-msvc-x86",
       "inheritEnvironments": [ "msvc_x32" ],
       "buildRoot": "${projectDir}\\build\\${name}",
-      "installRoot": "${projectDir}\\install\\${name}",
-      "cmakeExecutable": "C:\\Program Files\\CMake\\bin\\cmake.exe"
+      "installRoot": "${projectDir}\\install\\${name}"
     },
     {
-      "name": "Debug64-Static",
+      "name": "Debug64",
       "generator": "Visual Studio 17 2022 Win64",
       "configurationType": "Debug",
       "intelliSenseMode": "windows-msvc-x64",
       "inheritEnvironments": [ "msvc_x64_x64" ],
       "buildCommandArgs": "-p:PreferredToolArchitecture=x64",
       "buildRoot": "${projectDir}\\build\\${name}",
-      "installRoot": "${projectDir}\\install\\${name}",
-      "cmakeExecutable": "C:\\Program Files\\CMake\\bin\\cmake.exe"
-    },
-    {
-      "name": "Release32-Dynamic",
-      "generator": "Visual Studio 17 2022",
-      "configurationType": "Release",
-      "intelliSenseMode": "windows-msvc-x86",
-      "inheritEnvironments": [ "msvc_x32" ],
-      "cmakeCommandArgs": "-DDOWNLOADER_LINK_STATICALLY=Off",
-      "buildRoot": "${projectDir}\\build\\${name}",
-      "installRoot": "${projectDir}\\install\\${name}",
-      "cmakeExecutable": "C:\\Program Files\\CMake\\bin\\cmake.exe"
-    },
-    {
-      "name": "Release64-Dynamic",
-      "generator": "Visual Studio 17 2022 Win64",
-      "configurationType": "Release",
-      "intelliSenseMode": "windows-msvc-x64",
-      "inheritEnvironments": [ "msvc_x64_x64" ],
-      "buildCommandArgs": "-p:PreferredToolArchitecture=x64",
-      "buildRoot": "${projectDir}\\build\\${name}",
-      "installRoot": "${projectDir}\\install\\${name}",
-      "cmakeExecutable": "C:\\Program Files\\CMake\\bin\\cmake.exe",
-      "cmakeCommandArgs": "-DDOWNLOADER_LINK_STATICALLY=Off"
-    },
-    {
-      "name": "Debug32-Dynamic",
-      "generator": "Visual Studio 17 2022",
-      "configurationType": "Debug",
-      "intelliSenseMode": "windows-msvc-x86",
-      "inheritEnvironments": [ "msvc_x32" ],
-      "buildRoot": "${projectDir}\\build\\${name}",
-      "installRoot": "${projectDir}\\install\\${name}",
-      "cmakeExecutable": "C:\\Program Files\\CMake\\bin\\cmake.exe",
-      "cmakeCommandArgs": "-DDOWNLOADER_LINK_STATICALLY=Off"
-    },
-    {
-      "name": "Debug64-Dynamic",
-      "generator": "Visual Studio 17 2022 Win64",
-      "configurationType": "Debug",
-      "intelliSenseMode": "windows-msvc-x64",
-      "inheritEnvironments": [ "msvc_x64_x64" ],
-      "buildCommandArgs": "-p:PreferredToolArchitecture=x64",
-      "buildRoot": "${projectDir}\\build\\${name}",
-      "installRoot": "${projectDir}\\install\\${name}",
-      "cmakeExecutable": "C:\\Program Files\\CMake\\bin\\cmake.exe",
-      "cmakeCommandArgs": "-DDOWNLOADER_LINK_STATICALLY=Off"
+      "installRoot": "${projectDir}\\install\\${name}"
     }
   ]
 }
