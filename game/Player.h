@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Coordinate.h"
 #include "types.h"
+#include "Coordinate.h"
 
 class Player
 {
@@ -15,9 +15,9 @@ public:
 	Player(int id);
 	
 	void setPlayertype(PlayerType playertype);
-	void setLocation(const Coordinate& location);
+	void setLocation(Coordinate& location);
 
-	int getID() const;
-	PlayerType getPlayerType() const;
-	Coordinate getLocation() const;
+	int getID();
+	PlayerType getPlayerType();
+	Coordinate getLocation();
 };

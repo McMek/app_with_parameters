@@ -12,12 +12,12 @@ void Coordinate::SetPositionY(int y)
     m_y = y;
 }
 
-int Coordinate::GetPositionX() const
+int Coordinate::GetPositionX()
 {
     return m_x;
 }
 
-int Coordinate::GetPositionY() const
+int Coordinate::GetPositionY()
 {
     return m_y;
 }

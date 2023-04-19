@@ -18,7 +18,7 @@ World::World(int size)
 	m_worldmap.resize(size * size);
 }
 
-int World::getSize() const
+int World::getSize()
 {
 	return m_size;
 }
@@ -28,7 +28,7 @@ vector<int> World::getWorldMap() const
 	return m_worldmap;
 }
 
-int World::GetMapIndex (const Coordinate& coord) const
+int World::GetMapIndex (Coordinate& coord)
 {
 	int x = coord.GetPositionX();
 	int y = coord.GetPositionY();
@@ -41,7 +41,7 @@ void World::ClearWorld()
 	fill(m_worldmap.begin(), m_worldmap.end(), 0);
 }
 
-bool World::MovePlayer(const Player& p, const Coordinate& c)
+bool World::MovePlayer(Player& p, Coordinate& c)
 {
 	int index = GetMapIndex(c);
 
@@ -69,7 +69,7 @@ bool World::MovePlayer(const Player& p, const Coordinate& c)
 	return true;
 }
 
-void World::ClearCoordinate(const Coordinate& c)
+void World::ClearCoordinate(Coordinate& c)
 {
 	int index = GetMapIndex(c);
 
@@ -79,7 +79,7 @@ void World::ClearCoordinate(const Coordinate& c)
 	}
 }
 
-int World::GetCellValue(const Coordinate& c)
+int World::GetCellValue(Coordinate& c)
 {
 	int index = GetMapIndex(c);
 
@@ -93,7 +93,7 @@ int World::GetCellValue(const Coordinate& c)
 	}
 }
 
-int World::CountNeighbours(const Coordinate& c)
+int World::CountNeighbours(Coordinate& c)
 {
 	int count = 0;
 

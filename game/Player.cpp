@@ -1,28 +1,28 @@
 #include "Player.h"
 
-Player::Player(int id) : m_id(id) {}
+Player::Player(int id) : m_id(id), m_location(0,0) {}
 
 void Player::setPlayertype(PlayerType playertype)
 {
 	m_playerType = playertype;
 }
 
-void Player::setLocation(const Coordinate& location)
+void Player::setLocation(Coordinate& location)
 {
 	m_location = location;
 }
 
-int Player::getID() const
+int Player::getID()
 {
 	return m_id;
 }
 
-PlayerType Player::getPlayerType() const
+PlayerType Player::getPlayerType()
 {
 	return m_playerType;
 }
 
-Coordinate Player::getLocation() const
+Coordinate Player::getLocation()
 {
 	return m_location;
 }

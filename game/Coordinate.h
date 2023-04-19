@@ -10,6 +10,6 @@ public:
     Coordinate(int x, int y);
     void SetPositionX(int x);
     void SetPositionY(int y);
-    int GetPositionX() const;
-    int GetPositionY() const;
+    int GetPositionX();
+    int GetPositionY();
 };
