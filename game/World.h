@@ -21,4 +21,5 @@ public:
 	void ClearCoordinate(Coordinate& c);
 	int GetCellValue(Coordinate& c);
 	int CountNeighbours(Coordinate& c);
+	void AddPlayer(Player* player, int x, int y);
 };

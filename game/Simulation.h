@@ -1,6 +1,8 @@
 #pragma once
 
+#include <vector>
 #include "World.h"
+#include "Player.h"
 
 class Simulation
 {
@@ -13,6 +15,13 @@ private:
 
 	Player* CreatePlayer(int id);
 	World* CreateWorld(int worldSize);
-
 	void PopulateWorld(int numberOfPlayers);
+
+public:
+	Simulation() = delete;
+	void ResetSimulation(int worldSize, long maxSteps, int numberOfPlayers);
+	long GetMaxSteps() const;
+	long GetCurrentStep() const;
+	bool IsEndOfSimulation();
+	World* GetNextEvolution();
 };

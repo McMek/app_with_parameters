@@ -122,3 +122,9 @@ int World::CountNeighbours(Coordinate& c)
 
 	return count;
 }
+
+void World::AddPlayer(Player* player, int x, int y)
+{
+	Coordinate coord(x, y);
+	MovePlayer(*player, coord);
+}
