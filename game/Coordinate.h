@@ -7,6 +7,7 @@ private:
     int m_y;
 
 public:
+    Coordinate();
     Coordinate(int x, int y);
     void SetPositionX(int x);
     void SetPositionY(int y);

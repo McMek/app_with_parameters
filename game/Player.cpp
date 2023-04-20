@@ -9,7 +9,8 @@ void Player::setPlayertype(PlayerType playertype)
 
 void Player::setLocation(Coordinate& location)
 {
-	m_location = location;
+	m_location.SetPositionX(location.GetPositionX());
+	m_location.SetPositionY(location.GetPositionY());
 }
 
 int Player::getID()

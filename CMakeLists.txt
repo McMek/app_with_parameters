@@ -9,9 +9,9 @@ project(AppWithParameters
 add_executable(AppWithParameters
     "main.cpp"
     "helpers.cpp"
-    "Coordinate.cpp"
-    "Player.cpp"
-    "World.cpp"
+    "game/Coordinate.cpp"
+    "game/Player.cpp"
+    "game/World.cpp"
 )
 
 target_compile_features(AppWithParameters PRIVATE cxx_std_20)

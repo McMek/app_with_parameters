@@ -1,6 +1,10 @@
 #include "Coordinate.h"
 
-Coordinate::Coordinate(int x, int y) : m_x(x), m_y(y) {}
+Coordinate::Coordinate(int x, int y) : m_x(x), m_y(y) 
+{
+    x = 0;
+    y = 0;
+}
 
 void Coordinate::SetPositionX(int x)
 {
