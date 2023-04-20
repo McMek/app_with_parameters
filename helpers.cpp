@@ -9,11 +9,10 @@
 #include <map>
 #include <chrono>
 #include "helpers.h"
-using namespace std;
 
 bool FileExists(const char* filename)
 {
-    if (filesystem::exists(filename))
+    if (std::filesystem::exists(filename))
     {
         return true;
     }
@@ -27,8 +26,8 @@ bool debugFinder = false;
 
 bool ArgumentParser(int argc, char* argv[])
 {
-    vector<string> args(argv + 1, argv + argc);
-    map<string, string> argm;
+    std::vector<std::string> args(argv + 1, argv + argc);
+    std::map<std::string, std::string> argm;
 
     if (find(args.begin(), args.end(), "test") != args.end())
     {   
@@ -40,26 +39,26 @@ bool ArgumentParser(int argc, char* argv[])
         for (const auto& str : args)
         {
             size_t pos = str.find('=');
-            if (pos != string::npos)
+            if (pos != std::string::npos)
             {
-                string key = str.substr(0, pos);
-                string value = str.substr(pos + 1);
+                std::string key = str.substr(0, pos);
+                std::string value = str.substr(pos + 1);
                 argm[key] = value;
             }
         }
 
-        cout << endl;
+        std::cout << std::endl;
 
         for (const auto& [key, value] : argm)
         {
-            cout << "Key: " << key << "\n" << "Value: " << value << "\n" << endl;
+            std::cout << "Key: " << key << "\n" << "Value: " << value << "\n" << std::endl;
         }
 
         return true;
     }
     else
     {
-        cout << "\nUsage: appwithParameters.exe test\n" << endl;
+        std::cout << "\nUsage: appwithParameters.exe test\n" << std::endl;
        
         return false;
     }
@@ -69,14 +68,12 @@ int64_t timerStartedAt;
 
 void StartTimer()
 {
-    using namespace std::chrono;
-    timerStartedAt = duration_cast<milliseconds>(system_clock::now().time_since_epoch()).count();
+    timerStartedAt = duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
 }
 
 int64_t GetDeltaTime()
 {
-    using namespace std::chrono;
-    int64_t currentTime = duration_cast<milliseconds>(system_clock::now().time_since_epoch()).count();
+    int64_t currentTime = duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
 
     return currentTime - timerStartedAt;
 }

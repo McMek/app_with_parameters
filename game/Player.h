@@ -14,10 +14,10 @@ public:
 	Player() = delete;
 	Player(int id);
 	
-	void setPlayertype(PlayerType playertype);
-	void setLocation(Coordinate& location);
+	void SetPlayertype(PlayerType playertype);
+	void SetLocation(Coordinate& location);
 
-	int getID();
-	PlayerType getPlayerType();
-	Coordinate getLocation();
+	int GetID();
+	PlayerType GetPlayerType();
+	Coordinate GetLocation();
 };

@@ -5,27 +5,29 @@
 #include <stdio.h>
 #include <filesystem>
 #include "helpers.h"
-using namespace std;
+#include "graphicstest.h"
 
 int main(int argc, char* argv[])
 {
 	StartTimer();
+
+	TestGraphics::DrawTestWindow();
 	
 	if (!ArgumentParser(argc, argv))
 		return 1;
 	
 	if (FileExists("test.txt"))
 	{
-		cout << "test.txt file detected\n\n";
+		std::cout << "test.txt file detected\n\n";
 	}
 	else
 	{
-		cout << "test.txt file not detected\n\n";
+		std::cout << "test.txt file not detected\n\n";
 	}
 
 	if (debugFinder)
 	{
-		cout << "Elapsed time: " << GetDeltaTime() << " milliseconds\n" << endl;
+		std::cout << "Elapsed time: " << GetDeltaTime() << " milliseconds\n" << std::endl;
 	}
 
 	return 0;
