@@ -1,6 +1,6 @@
 #include "Player.h"
 
-Player::Player(int id) : m_id(id), m_location(0,0) {}
+Player::Player(int id) : m_id(id), m_playerType(PlayerType::NotEvaluated), m_location(0,0) {}
 
 void Player::setPlayertype(PlayerType playertype)
 {
