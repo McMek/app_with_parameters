@@ -5,10 +5,13 @@
 #include <stdio.h>
 #include <filesystem>
 #include "helpers.h"
+#include "graphicstest.h"
 
 int main(int argc, char* argv[])
 {
 	StartTimer();
+
+	TestGraphics::DrawTestWindow();
 	
 	if (!ArgumentParser(argc, argv))
 		return 1;
