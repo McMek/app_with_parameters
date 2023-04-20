@@ -1,5 +1,4 @@
 #include "World.h"
-using namespace std;
 
 World::World() : m_size(100), m_worldmap(10000, 0) {}
 
@@ -18,12 +17,12 @@ World::World(int size)
 	m_worldmap.resize(size * size);
 }
 
-int World::getSize()
+int World::GetSize()
 {
 	return m_size;
 }
 
-vector<int> World::getWorldMap() const
+std::vector<int> World::GetWorldMap() const
 {
 	return m_worldmap;
 }
@@ -57,14 +56,14 @@ bool World::MovePlayer(Player& p, Coordinate& c)
 
 	for (int i = 0; i < m_worldmap.size(); i++)
 	{
-		if (m_worldmap[i] == p.getID())
+		if (m_worldmap[i] == p.GetID())
 		{
 			m_worldmap[i] = 0;
 			break;
 		}
 	}
 
-	m_worldmap[index] = p.getID();
+	m_worldmap[index] = p.GetID();
 
 	return true;
 }

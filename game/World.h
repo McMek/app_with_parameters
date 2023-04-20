@@ -3,19 +3,18 @@
 #include <vector>
 #include "Coordinate.h"
 #include "Player.h"
-using namespace std;
 
 class World
 {
 private:
 	int m_size;
-	vector<int> m_worldmap;
+	std::vector<int> m_worldmap;
 
 public:
 	World();
 	World(int size);
-	int getSize();
-	vector<int> getWorldMap() const;
+	int GetSize();
+	std::vector<int> GetWorldMap() const;
 	int GetMapIndex(Coordinate& coord);
 	void ClearWorld();
 	bool MovePlayer(Player& p, Coordinate& c);
