@@ -17,4 +17,6 @@ add_executable(AppWithParameters
 target_compile_features(AppWithParameters PRIVATE cxx_std_20)
 
 target_include_directories(AppWithParameters 
-        PUBLIC ./)
+        PUBLIC ./
+        PRIVATE game
+        )

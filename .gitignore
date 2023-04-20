@@ -35,7 +35,6 @@ out/
 CMakeSettings.json
 .vs/
 .vscode/
-Downloader/include/Versions.h
 .cache/
 build/
 bin/
