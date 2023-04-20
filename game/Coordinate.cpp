@@ -2,11 +2,7 @@
 
 Coordinate::Coordinate() : m_x(0), m_y(0) {}
 
-Coordinate::Coordinate(int x, int y) : m_x(x), m_y(y) 
-{
-    x = 0;
-    y = 0;
-}
+Coordinate::Coordinate(int x, int y) : m_x(x), m_y(y) {}
 
 void Coordinate::SetPositionX(int x)
 {

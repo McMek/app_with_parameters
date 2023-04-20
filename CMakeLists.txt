@@ -27,6 +27,7 @@ add_executable(AppWithParameters
     "game/Coordinate.cpp"
     "game/Player.cpp"
     "game/World.cpp"
+    "game/Simulation.cpp"
     "graphics/graphicstest.cpp")
 
 target_compile_features(AppWithParameters PRIVATE cxx_std_20)
