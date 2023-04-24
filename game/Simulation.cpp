@@ -14,6 +14,7 @@ World* Simulation::CreateWorld(int worldSize)
 
 void Simulation::PopulateWorld(int numberOfPlayers)
 {
+	srand(m_randomSeed);
 	for (int i = 0; i < numberOfPlayers; i++)
 	{
 		Player* player = CreatePlayer(i);
