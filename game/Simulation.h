@@ -23,5 +23,6 @@ public:
 	long GetMaxSteps() const;
 	long GetCurrentStep() const;
 	bool IsEndOfSimulation();
-	World* GetNextEvolution();
+	//World* GetNextEvolution();
+	void GetNextEvolution();
 };

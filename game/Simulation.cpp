@@ -62,8 +62,46 @@ bool Simulation::IsEndOfSimulation()
 	return m_currentStep >= m_maxSteps;
 }
 
-World* Simulation::GetNextEvolution()
+void Simulation::GetNextEvolution()
 {
-	return m_world;
+	m_currentStep++;
+
+	World* currentWorld = m_world;
+	World* nextWorld = new World(currentWorld->GetSize());
+
+	for (Player* player : m_players)
+	{
+		Coordinate currentLoc = player->GetLocation();
+
+		int numNeighbors = currentWorld->CountNeighbours(currentLoc);
+
+		PlayerType newType = player->GetPlayerType();
+		if (player->GetPlayerType() == PlayerType::Alive)
+		{
+			if (numNeighbors <= 1 || numNeighbors >= 4)
+			{
+				newType = PlayerType::Dead;
+			}
+		}
+		else if (player->GetPlayerType() == PlayerType::Dead)
+		{
+			if (numNeighbors == 3)
+			{
+				newType = PlayerType::Alive;
+			}
+		}
+
+		player->SetPlayertype(newType);
+
+		Coordinate newLoc = currentLoc;
+		while (!currentWorld->MovePlayer(*player, newLoc))
+		{
+			newLoc = Coordinate(rand() % currentWorld->GetSize(), rand() % currentWorld->GetSize());
+		}
+		nextWorld->MovePlayer(*player, newLoc);
+	}
+
+	delete currentWorld;
+	m_world = nextWorld;
 }
 
