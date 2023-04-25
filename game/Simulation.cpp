@@ -69,36 +69,32 @@ void Simulation::GetNextEvolution()
 	World* currentWorld = m_world;
 	World* nextWorld = new World(currentWorld->GetSize());
 
-	for (Player* player : m_players)
+	for (int i = 0; i < currentWorld->GetSize(); i++)
 	{
-		Coordinate currentLoc = player->GetLocation();
-
-		int numNeighbors = currentWorld->CountNeighbours(currentLoc);
-
-		PlayerType newType = player->GetPlayerType();
-		if (player->GetPlayerType() == PlayerType::Alive)
+		for (int j = 0; j < currentWorld->GetSize(); j++)
 		{
-			if (numNeighbors <= 1 || numNeighbors >= 4)
+			Coordinate currentLoc(i, j);
+
+			int numNeighbors = currentWorld->CountNeighbours(currentLoc);
+			PlayerType newType = player->GetPlayerType();
+
+			if (player->GetPlayerType() == PlayerType::Alive)
 			{
-				newType = PlayerType::Dead;
+				if (numNeighbors <= 1 || numNeighbors >= 4)
+				{
+					newType = PlayerType::Dead;
+				}
 			}
-		}
-		else if (player->GetPlayerType() == PlayerType::Dead)
-		{
-			if (numNeighbors == 3)
+			else if (player->GetPlayerType() == PlayerType::Dead)
 			{
-				newType = PlayerType::Alive;
+				if (numNeighbors == 3)
+				{
+					newType = PlayerType::Alive;
+				}
 			}
-		}
 
-		player->SetPlayertype(newType);
-
-		Coordinate newLoc = currentLoc;
-		while (!currentWorld->MovePlayer(*player, newLoc))
-		{
-			newLoc = Coordinate(rand() % currentWorld->GetSize(), rand() % currentWorld->GetSize());
+			nextWorld->SetPlayertype(currentLoc, newType);
 		}
-		nextWorld->MovePlayer(*player, newLoc);
 	}
 
 	delete currentWorld;
