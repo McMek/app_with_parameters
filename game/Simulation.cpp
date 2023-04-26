@@ -62,56 +62,56 @@ bool Simulation::IsEndOfSimulation()
 	return m_currentStep >= m_maxSteps;
 }
 
-void Simulation::GetNextEvolution()
+World* Simulation::GetNextEvolution()
 {
-	if (m_currentStep >= m_maxSteps)
-	{
-		return;
-	}
+	World* nextWorld = new World(m_world->GetSize());
 
-	for (int x = 0; x < m_world->GetSize(); x++)
+	std::vector<Player*> nextPlayers;
+
+	for (int i = 0; i < m_world->GetWorldMap().size(); i++)
 	{
-		for (int y = 0; y < m_world->GetSize(); y++)
+		Coordinate* coord = m_world->ConvertWorldMapTo2D(i);
+
+		int cellValue = m_world->GetCellValue(*coord);
+
+		int numLiveNeighbours = m_world->CountNeighbours(*coord);
+
+		if (cellValue != 0)
 		{
-			Coordinate coord(x, y);
-			int cellValue = m_world->GetCellValue(coord);
-			Player* currentPlayer = nullptr;
-
-			if (cellValue != 0)
+			if (numLiveNeighbours == 2 || numLiveNeighbours == 3)
 			{
-				for (auto player : m_players)
-				{
-					if (player->GetID() == cellValue)
-					{
-						currentPlayer = player;
-						break;
-					}
-				}
-			}
+				Player* player = m_players[cellValue - 1];
+				nextPlayers.push_back(player);
 
-			int liveNeighbors = m_world->CountNeighbours(coord);
-
-			if (currentPlayer != nullptr)
-			{
-				if (liveNeighbors < 2 || liveNeighbors > 3)
-				{
-					m_world->ClearCoordinate(coord);
-					m_players.erase(std::remove(m_players.begin(), m_players.end(), currentPlayer), m_players.end());
-					delete currentPlayer;
-				}
+				nextWorld->AddPlayer(player, coord->GetPositionX(), coord->GetPositionY());
 			}
 			else
 			{
-				if (liveNeighbors == 3)
-				{
-					Player* newPlayer = CreatePlayer(0);
-					m_players.push_back(newPlayer);
-					m_world->AddPlayer(newPlayer, x, y);
-				}
+				delete m_players[cellValue - 1];
 			}
 		}
+		else
+		{
+			if (numLiveNeighbours == 3)
+			{
+				Player* player = new Player(m_players.size() + 1);
+				nextPlayers.push_back(player);
+
+				nextWorld->AddPlayer(player, coord->GetPositionX(), coord->GetPositionY());
+			}
+		}
+
+		delete coord;
 	}
 
+	delete m_world;
+
+	m_players = nextPlayers;
+
+	m_world = nextWorld;
+
 	m_currentStep++;
+
+	return m_world;
 }
 

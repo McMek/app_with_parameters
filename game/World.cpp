@@ -130,13 +130,9 @@ void World::AddPlayer(Player* player, int x, int y)
 }
 
 
-Coordinate World::ConvertWorldMapTo2D(int indexToCell)
+Coordinate* World::ConvertWorldMapTo2D(int indexToCell)
 {
-	std::vector<std::vector<int>> m_worldmap2d(m_size, std::vector<int>(m_size));
-	for (int i = 0; i < m_worldmap.size(); i++)
-	{
-		int x = indexToCell / m_size;
-		int y = indexToCell % m_size;
-		m_worldmap2d[x][y] = m_worldmap[indexToCell];
-	}
+	int y = indexToCell / m_size;
+	int x = indexToCell % m_size;
+	return new Coordinate(x, y);
 }
