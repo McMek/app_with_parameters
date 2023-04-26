@@ -22,4 +22,5 @@ public:
 	int GetCellValue(Coordinate& c);
 	int CountNeighbours(Coordinate& c);
 	void AddPlayer(Player* player, int x, int y);
+	//void ConvertWorldMapTo2D();
 };

@@ -64,40 +64,54 @@ bool Simulation::IsEndOfSimulation()
 
 void Simulation::GetNextEvolution()
 {
-	m_currentStep++;
-
-	World* currentWorld = m_world;
-	World* nextWorld = new World(currentWorld->GetSize());
-
-	for (int i = 0; i < currentWorld->GetSize(); i++)
+	if (m_currentStep >= m_maxSteps)
 	{
-		for (int j = 0; j < currentWorld->GetSize(); j++)
+		return;
+	}
+
+	for (int x = 0; x < m_world->GetSize(); x++)
+	{
+		for (int y = 0; y < m_world->GetSize(); y++)
 		{
-			Coordinate currentLoc(i, j);
+			Coordinate coord(x, y);
+			int cellValue = m_world->GetCellValue(coord);
+			Player* currentPlayer = nullptr;
 
-			int numNeighbors = currentWorld->CountNeighbours(currentLoc);
-			PlayerType newType = player->GetPlayerType();
-
-			if (player->GetPlayerType() == PlayerType::Alive)
+			if (cellValue != 0)
 			{
-				if (numNeighbors <= 1 || numNeighbors >= 4)
+				for (auto player : m_players)
 				{
-					newType = PlayerType::Dead;
-				}
-			}
-			else if (player->GetPlayerType() == PlayerType::Dead)
-			{
-				if (numNeighbors == 3)
-				{
-					newType = PlayerType::Alive;
+					if (player->GetID() == cellValue)
+					{
+						currentPlayer = player;
+						break;
+					}
 				}
 			}
 
-			nextWorld->SetPlayertype(currentLoc, newType);
+			int liveNeighbors = m_world->CountNeighbours(coord);
+
+			if (currentPlayer != nullptr)
+			{
+				if (liveNeighbors < 2 || liveNeighbors > 3)
+				{
+					m_world->ClearCoordinate(coord);
+					m_players.erase(std::remove(m_players.begin(), m_players.end(), currentPlayer), m_players.end());
+					delete currentPlayer;
+				}
+			}
+			else
+			{
+				if (liveNeighbors == 3)
+				{
+					Player* newPlayer = CreatePlayer(0);
+					m_players.push_back(newPlayer);
+					m_world->AddPlayer(newPlayer, x, y);
+				}
+			}
 		}
 	}
 
-	delete currentWorld;
-	m_world = nextWorld;
+	m_currentStep++;
 }
 

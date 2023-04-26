@@ -14,7 +14,7 @@ public:
 	Player() = delete;
 	Player(int id);
 	
-	void SetPlayertype(PlayerType playertype);
+	void SetPlayerType(PlayerType playertype);
 	void SetLocation(Coordinate& location);
 
 	int GetID();
