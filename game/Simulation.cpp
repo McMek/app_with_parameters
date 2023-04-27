@@ -88,10 +88,7 @@ World* Simulation::GetNextEvolution()
 		{
 			if (numLiveNeighbours == 2 || numLiveNeighbours == 3)
 			{
-				for (Player* player : m_players)
-				{
-					//this shouldn't be here
-				}
+				
 			}
 		}
 	}
