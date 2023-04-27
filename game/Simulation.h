@@ -24,5 +24,4 @@ public:
 	long GetCurrentStep() const;
 	bool IsEndOfSimulation();
 	World* GetNextEvolution();
-	//void GetNextEvolution();
 };
