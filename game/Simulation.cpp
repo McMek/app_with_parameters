@@ -88,10 +88,33 @@ World* Simulation::GetNextEvolution()
 		{
 			if (numLiveNeighbours == 2 || numLiveNeighbours == 3)
 			{
-				
+				Player* player = m_players[cellValue - 1];
+				m_players.push_back(player);
+
+				nextWorld->AddPlayer(player, coord->GetPositionX(), coord->GetPositionY());
+			}
+			else
+			{
+				delete m_players[cellValue - 1];
 			}
 		}
+		else
+		{
+			if (numLiveNeighbours == 3)
+			{
+				Player* player = new Player(m_players.size() + 1);
+				m_players.push_back(player);
+
+				nextWorld->AddPlayer(player, coord->GetPositionX(), coord->GetPositionY());
+			}
+		}
+
+		delete coord;
 	}
+
+	delete m_world;
+
+	m_currentStep++;
 
 	return nextWorld;
 }
