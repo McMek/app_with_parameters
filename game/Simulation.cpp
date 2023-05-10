@@ -84,28 +84,61 @@ World* Simulation::GetNextEvolution()
 
 		int numLiveNeighbours = m_world->CountNeighbours(*coord);
 
+		Player* currentPlayer = nullptr;
+
 		if (cellValue != 0)
 		{
 			if (numLiveNeighbours == 2 || numLiveNeighbours == 3)
 			{
-				Player* player = m_players[cellValue - 1];
-				m_players.push_back(player);
+				for (auto player : m_players)
+				{
+					if (player->GetID() == cellValue)
+					{
+						currentPlayer = player;
+						break;
+					}
+				}
 
-				nextWorld->AddPlayer(player, coord->GetPositionX(), coord->GetPositionY());
+				if (currentPlayer != nullptr)
+				{
+					nextWorld->AddPlayer(currentPlayer, coord->GetPositionX(), coord->GetPositionY());
+				}
 			}
 			else
 			{
-				delete m_players[cellValue - 1];
+				for (auto player : m_players)
+				{
+					if (player->GetID() == cellValue)
+					{
+						currentPlayer = player;
+					}
+
+					m_world->ClearCoordinate(*coord);
+					m_players.erase(std::remove(m_players.begin(), m_players.end(), currentPlayer), m_players.end());
+
+					delete currentPlayer;
+					currentPlayer = nullptr;
+				}
 			}
 		}
 		else
 		{
 			if (numLiveNeighbours == 3)
 			{
-				Player* player = new Player(m_players.size() + 1);
-				m_players.push_back(player);
+				for (auto player : m_players)
+				{
+					if (player->GetID() == cellValue)
+					{
+						currentPlayer = player;
+						Player* player = new Player(maxID++);
+						m_players.push_back(player);
+					}
+				}
 
-				nextWorld->AddPlayer(player, coord->GetPositionX(), coord->GetPositionY());
+				if (currentPlayer != nullptr)
+				{
+					nextWorld->AddPlayer(currentPlayer, coord->GetPositionX(), coord->GetPositionY());
+				}
 			}
 		}
 
@@ -115,6 +148,8 @@ World* Simulation::GetNextEvolution()
 	delete m_world;
 
 	m_currentStep++;
+
+	m_world = nextWorld;
 
 	return nextWorld;
 }
