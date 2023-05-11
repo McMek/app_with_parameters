@@ -2,7 +2,7 @@
 
 Player::Player(int id) : m_id(id), m_playerType(PlayerType::NotEvaluated), m_location(0,0) {}
 
-void Player::SetPlayertype(PlayerType playertype)
+void Player::SetPlayerType(PlayerType playertype)
 {
 	m_playerType = playertype;
 }

@@ -128,3 +128,11 @@ void World::AddPlayer(Player* player, int x, int y)
 	Coordinate coord(x, y);
 	MovePlayer(*player, coord);
 }
+
+
+Coordinate* World::ConvertWorldMapTo2D(int indexToCell)
+{
+	int y = indexToCell / m_size;
+	int x = indexToCell % m_size;
+	return new Coordinate(x, y);
+}

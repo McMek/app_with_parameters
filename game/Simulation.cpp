@@ -62,46 +62,88 @@ bool Simulation::IsEndOfSimulation()
 	return m_currentStep >= m_maxSteps;
 }
 
-void Simulation::GetNextEvolution()
+World* Simulation::GetNextEvolution()
 {
-	m_currentStep++;
+	World* nextWorld = new World(m_world->GetSize());
 
-	World* currentWorld = m_world;
-	World* nextWorld = new World(currentWorld->GetSize());
-
-	for (Player* player : m_players)
+	int maxID = 0;
+	for (auto player : m_players)
 	{
-		Coordinate currentLoc = player->GetLocation();
-
-		int numNeighbors = currentWorld->CountNeighbours(currentLoc);
-
-		PlayerType newType = player->GetPlayerType();
-		if (player->GetPlayerType() == PlayerType::Alive)
+		if (player->GetID() > maxID)
 		{
-			if (numNeighbors <= 1 || numNeighbors >= 4)
+			maxID = player->GetID();
+		}
+	}
+	maxID = maxID + 1;
+
+	for (int i = 0; i < m_world->GetSize(); i++)
+	{
+		Coordinate* coord = m_world->ConvertWorldMapTo2D(i);
+
+		int cellValue = m_world->GetCellValue(*coord);
+
+		int numLiveNeighbours = m_world->CountNeighbours(*coord);
+
+		Player* currentPlayer = nullptr;
+
+		if (cellValue != 0)
+		{
+			if (numLiveNeighbours == 2 || numLiveNeighbours == 3)
 			{
-				newType = PlayerType::Dead;
+				for (auto player : m_players)
+				{
+					if (player->GetID() == cellValue)
+					{
+						currentPlayer = player;
+						break;
+					}
+				}
+
+				if (currentPlayer != nullptr)
+				{
+					nextWorld->AddPlayer(currentPlayer, coord->GetPositionX(), coord->GetPositionY());
+				}
+			}
+			else
+			{
+				for (auto player : m_players)
+				{
+					if (player->GetID() == cellValue)
+					{
+						currentPlayer = player;
+					}
+				}
+
+				m_world->ClearCoordinate(*coord);
+				m_players.erase(std::remove(m_players.begin(), m_players.end(), currentPlayer), m_players.end());
+
+				delete currentPlayer;
+				currentPlayer = nullptr;
 			}
 		}
-		else if (player->GetPlayerType() == PlayerType::Dead)
+		else
 		{
-			if (numNeighbors == 3)
+			if (numLiveNeighbours == 3)
 			{
-				newType = PlayerType::Alive;
+				Player* player = new Player(maxID++);
+				m_players.push_back(player);
+
+				if (currentPlayer != nullptr)
+				{
+					nextWorld->AddPlayer(player, coord->GetPositionX(), coord->GetPositionY());
+				}
 			}
 		}
 
-		player->SetPlayertype(newType);
-
-		Coordinate newLoc = currentLoc;
-		while (!currentWorld->MovePlayer(*player, newLoc))
-		{
-			newLoc = Coordinate(rand() % currentWorld->GetSize(), rand() % currentWorld->GetSize());
-		}
-		nextWorld->MovePlayer(*player, newLoc);
+		delete coord;
 	}
 
-	delete currentWorld;
+	delete m_world;
+
+	m_currentStep++;
+
 	m_world = nextWorld;
+
+	return nextWorld;
 }
 
