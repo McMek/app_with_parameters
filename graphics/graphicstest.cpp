@@ -10,7 +10,9 @@ namespace TestGraphics
 		
 		window.setFramerateLimit(60); // set the framerate
 
-
+		int gridSizeX = 40;
+		int gridSizeY = 34;
+		int cellSize = 20;
 
 		// run the program as long as the window is open
 		while (window.isOpen())
@@ -29,7 +31,7 @@ namespace TestGraphics
 
 			// draw everything here...
 			// window.draw(...);
-
+			/*
 			sf::CircleShape circle(50.f);
 			circle.setFillColor(sf::Color(100, 250, 50));
 			circle.setOutlineThickness(-10.f);
@@ -43,12 +45,37 @@ namespace TestGraphics
 			rectangle.setOutlineColor(sf::Color(100, 100, 100));
 			rectangle.setPosition(101.0f, 0.f);
 
-			sf::RectangleShape line(sf::Vector2f(200.f, 5.f));
+			sf::RectangleShape line(sf::Vector2f(200.f, 1.f));
 			line.setPosition(0.f, 101.f);
 
 			window.draw(circle);
 			window.draw(rectangle);
 			window.draw(line);
+			*/
+
+			for (int x = 0; x < gridSizeX; ++x)
+			{
+				sf::Vertex linesVertical[] =
+				{
+					sf::Vertex(sf::Vector2f(x * cellSize, 0.f)),
+					sf::Vertex(sf::Vector2f(x * cellSize, window.getSize().y))
+				};
+
+				window.draw(linesVertical, 2, sf::Lines);
+			}
+
+			for (int y = 0; y < gridSizeY; ++y)
+			{
+				sf::Vertex linesHorisontal[] =
+				{
+					sf::Vertex(sf::Vector2f(0.f, y * cellSize)),
+					sf::Vertex(sf::Vector2f(window.getSize().x, y * cellSize))
+				};
+
+				window.draw(linesHorisontal, 2, sf::Lines);
+			}
+			
+			
 
 
 			// end the current frame
