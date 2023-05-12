@@ -6,13 +6,16 @@ namespace TestGraphics
 {
 	void DrawTestWindow()
 	{
-		sf::RenderWindow window(sf::VideoMode(800, 600), "My window");
+		sf::RenderWindow window(sf::VideoMode(800, 800), "My window");
 		
 		window.setFramerateLimit(60); // set the framerate
 
-		int gridSizeX = 40;
-		int gridSizeY = 34;
-		int cellSize = 20;
+		int gridSizeX = 50;
+		int gridSizeY = 50;
+		int cellSize = 16;
+
+		int gridWidth = gridSizeX * cellSize;
+		int gridHeight = gridSizeY * cellSize;
 
 		// run the program as long as the window is open
 		while (window.isOpen())
@@ -31,34 +34,15 @@ namespace TestGraphics
 
 			// draw everything here...
 			// window.draw(...);
-			/*
-			sf::CircleShape circle(50.f);
-			circle.setFillColor(sf::Color(100, 250, 50));
-			circle.setOutlineThickness(-10.f);
-			circle.setOutlineColor(sf::Color(250, 150, 100));
-			circle.setPosition(0.0f, 0.0f);
 
-			sf::RectangleShape rectangle(sf::Vector2f(120.f, 50.f));
-			rectangle.setSize(sf::Vector2f(100.f, 100.f));
-			rectangle.setFillColor(sf::Color(50, 17, 40));
-			rectangle.setOutlineThickness(-10.f);
-			rectangle.setOutlineColor(sf::Color(100, 100, 100));
-			rectangle.setPosition(101.0f, 0.f);
-
-			sf::RectangleShape line(sf::Vector2f(200.f, 1.f));
-			line.setPosition(0.f, 101.f);
-
-			window.draw(circle);
-			window.draw(rectangle);
-			window.draw(line);
-			*/
+			sf::Color lineColor(128, 128, 128);
 
 			for (int x = 0; x < gridSizeX; ++x)
 			{
 				sf::Vertex linesVertical[] =
 				{
-					sf::Vertex(sf::Vector2f(x * cellSize, 0.f)),
-					sf::Vertex(sf::Vector2f(x * cellSize, window.getSize().y))
+					sf::Vertex(sf::Vector2f(x * cellSize, 0.f), lineColor),
+					sf::Vertex(sf::Vector2f(x * cellSize, gridHeight), lineColor)
 				};
 
 				window.draw(linesVertical, 2, sf::Lines);
@@ -68,12 +52,34 @@ namespace TestGraphics
 			{
 				sf::Vertex linesHorisontal[] =
 				{
-					sf::Vertex(sf::Vector2f(0.f, y * cellSize)),
-					sf::Vertex(sf::Vector2f(window.getSize().x, y * cellSize))
+					sf::Vertex(sf::Vector2f(0.f, y * cellSize), lineColor),
+					sf::Vertex(sf::Vector2f(gridWidth, y * cellSize), lineColor)
 				};
 
 				window.draw(linesHorisontal, 2, sf::Lines);
 			}
+
+			sf::Vertex outerVerticalLines[] =
+			{
+				sf::Vertex(sf::Vector2f(0.f, 0.f), lineColor),
+				sf::Vertex(sf::Vector2f(0.f, gridHeight), lineColor),
+				sf::Vertex(sf::Vector2f(gridWidth, 0.f), lineColor),
+				sf::Vertex(sf::Vector2f(gridWidth, gridHeight), lineColor)
+			};
+
+			window.draw(outerVerticalLines, 2, sf::Lines);
+			window.draw(outerVerticalLines + 2, 2, sf::Lines);
+
+			sf::Vertex outerHorisontalLines[] =
+			{
+				sf::Vertex(sf::Vector2f(0.f, 0.f), lineColor),
+				sf::Vertex(sf::Vector2f(gridWidth, 0.f), lineColor),
+				sf::Vertex(sf::Vector2f(0.f, gridHeight), lineColor),
+				sf::Vertex(sf::Vector2f(gridWidth, gridHeight), lineColor)
+			};
+
+			window.draw(outerHorisontalLines, 2, sf::Lines);
+			window.draw(outerHorisontalLines + 2, 2, sf::Lines);
 			
 			
 
