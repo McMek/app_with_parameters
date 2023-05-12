@@ -30,12 +30,25 @@ namespace TestGraphics
 			// draw everything here...
 			// window.draw(...);
 
-			sf::CircleShape shape(50.f);
+			sf::CircleShape circle(50.f);
+			circle.setFillColor(sf::Color(100, 250, 50));
+			circle.setOutlineThickness(-10.f);
+			circle.setOutlineColor(sf::Color(250, 150, 100));
+			circle.setPosition(0.0f, 0.0f);
 
-			// set the shape color to green
-			shape.setFillColor(sf::Color(100, 250, 50));
+			sf::RectangleShape rectangle(sf::Vector2f(120.f, 50.f));
+			rectangle.setSize(sf::Vector2f(100.f, 100.f));
+			rectangle.setFillColor(sf::Color(50, 17, 40));
+			rectangle.setOutlineThickness(-10.f);
+			rectangle.setOutlineColor(sf::Color(100, 100, 100));
+			rectangle.setPosition(101.0f, 0.f);
 
-			window.draw(shape);
+			sf::RectangleShape line(sf::Vector2f(200.f, 5.f));
+			line.setPosition(0.f, 101.f);
+
+			window.draw(circle);
+			window.draw(rectangle);
+			window.draw(line);
 
 
 			// end the current frame
