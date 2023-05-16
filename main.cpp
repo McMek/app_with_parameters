@@ -5,13 +5,16 @@
 #include <stdio.h>
 #include <filesystem>
 #include "helpers.h"
-#include "graphicstest.h"
+#include "worldrenderer.h"
+//#include "graphicstest.h"
 
 int main(int argc, char* argv[])
 {
 	StartTimer();
 
-	TestGraphics::DrawTestWindow();
+	//TestGraphics::DrawTestWindow();
+	WorldRenderer ercan;
+	ercan.Draw();
 	
 	if (!ArgumentParser(argc, argv))
 		return 1;
