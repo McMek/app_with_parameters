@@ -3,6 +3,7 @@
 #include <vector>
 #include "World.h"
 #include "Player.h"
+#include "worldrenderer.h"
 
 class Simulation
 {

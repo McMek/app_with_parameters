@@ -13,8 +13,9 @@ int main(int argc, char* argv[])
 	StartTimer();
 
 	//TestGraphics::DrawTestWindow();
-	WorldRenderer ercan;
-	ercan.Draw();
+	//WorldRenderer ercan;
+	//ercan.Draw();
+	Run();
 	
 	if (!ArgumentParser(argc, argv))
 		return 1;

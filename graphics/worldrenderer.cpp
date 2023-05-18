@@ -99,3 +99,9 @@ void WorldRenderer::Draw()
         window.display();
     }
 }
+
+void Run()
+{
+    WorldRenderer runthegrid;
+    runthegrid.Draw();
+}
